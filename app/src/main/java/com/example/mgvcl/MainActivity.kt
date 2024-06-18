@@ -48,7 +48,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         modifier = modifier,
         factory = { context ->
             // Inflate the XML layout
-            val view = LayoutInflater.from(context).inflate(R.layout.activity_login, null, false)
+            val view = LayoutInflater.from(context).inflate(R.layout.activity_splash, null, false)
 
 
 
