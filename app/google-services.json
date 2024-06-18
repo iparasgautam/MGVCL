@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "450316553340",
+    "project_id": "mgvcl-6abf7",
+    "storage_bucket": "mgvcl-6abf7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450316553340:android:01238c0aa558b48e774df9",
+        "android_client_info": {
+          "package_name": "com.example.mgvcl"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpAqmy_B39oEtkR90jBlzfqLQVeFxqplc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
