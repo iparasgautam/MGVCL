@@ -1,0 +1,1857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Scroller-->
+<!--suppress AndroidDomInspection -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:background="@drawable/pagebkg"
+    tools:context=".FormActivity">
+
+    <!--LinearLayout for adding multiple child-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        tools:context=".FormActivity">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="20dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@drawable/bg_cardview"
+            tools:ignore="MissingClass">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <!--Calender-->
+                <TextView
+                    android:id="@+id/tv_selected_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:padding="10dp"
+                    android:text="@string/selected_date"
+                    android:textColor="#00008B"
+                    android:textSize="18sp"
+                    app:drawableStartCompat="@drawable/baseline_calendar_month_24" />
+                <!--Dropdown for time of day-->
+                <Spinner
+                    android:id="@+id/spinner_time_of_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:padding="10dp"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--Dropdown-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="20dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:background="@drawable/bg_cardview">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_circle"
+                    android:padding="6dp"
+                    android:textColor="#00008B"
+                    android:text="Circle"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_circle"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_districts"
+                    android:layout_marginTop="10dp"
+                    android:padding="6dp"
+                    android:textColor="#00008B"
+                    android:text="District"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_districts"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_taluka"
+                    android:layout_marginTop="10dp"
+                    android:padding="6dp"
+                    android:textColor="#00008B"
+                    android:text="Taluka"
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
+
+                <Spinner
+                    android:id="@+id/spinner_taluka"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView_taluka"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--Data entry-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Village"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedV"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceV"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Feeder"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedF"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceF"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Town"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedT"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedT"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceT"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Poles (Damaged) (H.T. + L.T.)"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedP"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceP"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="HT Line (CKM)"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedH"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedH"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceH"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="LT Line (CKM)"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedL"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedL"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceL"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="(HT + LT) Damaged Conductor "
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Length in KM"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceHL"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="length"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="T/C (Damaged)"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedTC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedTC"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceTC"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="3 phase Service lines (Damaged)"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedTP"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedTP"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceTP"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="1 phase Service lines (Damaged)"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedTO"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedTO"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceTO"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Water Work"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedW"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedW"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceW"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Accident"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Human (Fatal)"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:paddingTop="10sp"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dept."
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_deptHFD"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="O/S"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_osHFO"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Human (Non Fatal)"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dept."
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_deptHNO"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="O/S"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_osHNO"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Animal Fatal"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Animal Fatal"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_animalFatal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Total number of Consumers"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Affected"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_affectedTN"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:autofillHints="affected"
+                            android:background="@drawable/edittext_border"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:padding="12dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rectified"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_marginEnd="8dp"/>
+
+                        <EditText
+                            android:id="@+id/input_rectifiedTN"
+                            android:layout_width="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:hint="Enter"
+                            android:inputType="number"
+                            android:background="@drawable/edittext_border"
+                            android:padding="12dp"
+                            android:layout_marginEnd="8dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balance"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_balanceTN"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="Balance"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:background="@drawable/editbox_border">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="Expenditure in Rs. Lacs"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#00008B"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Expenditure"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginEnd="8dp"/>
+
+                    <EditText
+                        android:id="@+id/input_expenditure"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="expenditure"
+                        android:background="@drawable/edittext_border"
+                        android:inputType="number"
+                        android:enabled="false"
+                        android:padding="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btn_submit_f"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:backgroundTint="@color/lavender"
+            android:background="@drawable/rounded_button"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+    </LinearLayout>
+</ScrollView>

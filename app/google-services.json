@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "450316553340",
-    "project_id": "mgvcl-6abf7",
-    "storage_bucket": "mgvcl-6abf7.appspot.com"
+    "project_number": "155215339559",
+    "firebase_url": "https://mgvcl-5d47f-default-rtdb.firebaseio.com",
+    "project_id": "mgvcl-5d47f",
+    "storage_bucket": "mgvcl-5d47f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:450316553340:android:01238c0aa558b48e774df9",
+        "mobilesdk_app_id": "1:155215339559:android:7ec2c5d04b0bce901e2e02",
         "android_client_info": {
           "package_name": "com.example.mgvcl"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDpAqmy_B39oEtkR90jBlzfqLQVeFxqplc"
+          "current_key": "AIzaSyCGpiHEcB8QyW-Ej4DrNGodPsRfJWmbeHc"
         }
       ],
       "services": {
