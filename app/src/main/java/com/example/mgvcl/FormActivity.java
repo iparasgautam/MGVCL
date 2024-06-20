@@ -191,12 +191,33 @@ public class FormActivity extends AppCompatActivity {
         talukasMap = new HashMap<>();
 
         // Populate Districts and Talukas Map (Sample Data)
-        districtsMap.put("Anand", new String[]{"Anand", "Anklav", "Borsad", "Khambhat", "Petlad", "Sojitra", "Tarapur", "Umreth"});
+
+//        districtsMap.put("Anand", new String[]{"Anand", "Kheda"});
+//        talukasMap.put("Anand", new String[]{"Anand", "Anklav", "Borsad", "Khambhat", "Petlad", "Sojitra", "Tarapur", "Umreth"});
+//        districtsMap.put("Baroda(city)", new String[]{"Vadodara"});
+//        talukasMap.put("Baroda(city)", new String[]{"Dabhoi", "Desar", "Karjan", "Padra", "Savli", "Sinor"});
+//        districtsMap.put("Baroda(city)", new String[]{"Chhota Udepur","Vadodara"});
+//        talukasMap.put("Baroda(O&M)", new String[]{"Dabhoi", "Desar", "Karjan", "Padra", "Savli", "Sinor"});
+//        talukasMap.put("Godhra", new String[]{"Balasinor", "Kadana", "Khanpur", "Lunawada", "Santrampur", "Virpur"});
+//        talukasMap.put("Nadiad", new String[]{"Kapadvanj", "Kathlal", "Kheda", "Mahudha", "Matar", "Mehmedabad", "Nadiad", "Thasra", "Vaso"});
+
+        districtsMap = new HashMap<>();
+        districtsMap.put("Anand", new String[]{"Anand", "Kheda"});
+        districtsMap.put("Baroda(city)", new String[]{"Vadodara"});
+        districtsMap.put("Baroda(O&M)", new String[]{"Chhota Udepur", "Vadodara"});
+        districtsMap.put("Godhra", new String[]{"Dahod", "Mahisagar", "Panch Mahals", "Vadodara"});
+        districtsMap.put("Nadiad", new String[]{"Ahmadabad", "Anand", "Kheda", "Mahisagar"});
+
+        // Initialize Talukas map
+        talukasMap = new HashMap<>();
         talukasMap.put("Anand", new String[]{"Anand", "Anklav", "Borsad", "Khambhat", "Petlad", "Sojitra", "Tarapur", "Umreth"});
-        talukasMap.put("Baroda(city)", new String[]{"Vadodara"});
-        talukasMap.put("Baroda(O&M)", new String[]{"Dabhoi", "Desar", "Karjan", "Padra", "Savli", "Sinor"});
-        talukasMap.put("Godhra", new String[]{"Balasinor", "Kadana", "Khanpur", "Lunawada", "Santrampur", "Virpur"});
-        talukasMap.put("Nadiad", new String[]{"Kapadvanj", "Kathlal", "Kheda", "Mahudha", "Matar", "Mehmedabad", "Nadiad", "Thasra", "Vaso"});
+        talukasMap.put("Kheda", new String[]{"Galteshwar", "Kapadvanj", "Kathlal", "Kheda", "Mahudha", "Matar", "Mehmedabd", "Nadiad", "Thasra", "Vaso"});
+        talukasMap.put("Vadodara", new String[]{"Dabhoi", "Desar", "Karjan", "Padra", "Savli", "Sinor", "Vadodara", "Vaghodia"});
+        talukasMap.put("Chhota Udepur", new String[]{"Bodeli", "Chhota Udaipur", "Jetpur Pavi", "Kavant", "Nasvadi", "Sankheda"});
+        talukasMap.put("Dahod", new String[]{"Devgadbaria", "Dhanpur", "Dahod", "Fatepura", "Garbada", "Jhalod", "Limkheda", "Sanjeli", "Shingvad"});
+        talukasMap.put("Mahisagar", new String[]{"Balasinor", "Kadana", "Khanpur", "Lunawada", "Santrampur", "Virpur"});
+        talukasMap.put("Panch Mahals", new String[]{"Ghoghamba", "Godhra", "Halol", "Jambughoda", "Kalol", "Morwa (Hadaf)", "Shehera"});
+        talukasMap.put("Ahmadabad", new String[]{"Bavla", "Daskroi", "Detroj-Rampura", "Dhandhuka", "Dholera", "Dholka", "Mandal", "Sanand", "Viramgam"});
 
         // Setup Circle Spinner
         ArrayAdapter<String> circleAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, circle);
@@ -299,12 +320,15 @@ public class FormActivity extends AppCompatActivity {
                 calculateBalance(inputAffectedP, inputRectifiedP, inputBalanceP);
             } else if (view == inputAffectedH || view == inputRectifiedH) {
                 calculateBalance(inputAffectedH, inputRectifiedH, inputBalanceH);
-                calculateBalance(inputAffectedH, inputAffectedL, inputBalanceHL);
+                calculateBalance1(inputAffectedH, inputAffectedL, inputBalanceHL);
+                calculateBalance2(inputAffectedH, inputAffectedL, inputAffectedTC, inputExpenditure);
             } else if (view == inputAffectedL || view == inputRectifiedL) {
                 calculateBalance(inputAffectedL, inputRectifiedL, inputBalanceL);
-                calculateBalance(inputAffectedH, inputAffectedL, inputBalanceHL);
+                calculateBalance1(inputAffectedH, inputAffectedL, inputBalanceHL);
+                calculateBalance2(inputAffectedH, inputAffectedL, inputAffectedTC, inputExpenditure);
             } else if (view == inputAffectedTC || view == inputRectifiedTC) {
                 calculateBalance(inputAffectedTC, inputRectifiedTC, inputBalanceTC);
+                calculateBalance2(inputAffectedH, inputAffectedL, inputAffectedTC, inputExpenditure);
             } else if (view == inputAffectedTP || view == inputRectifiedTP) {
                 calculateBalance(inputAffectedTP, inputRectifiedTP, inputBalanceTP);
             } else if (view == inputAffectedTO || view == inputRectifiedTO) {
@@ -320,6 +344,50 @@ public class FormActivity extends AppCompatActivity {
             } else if (view == inputAffectedTN || view == inputRectifiedTN) {
                 calculateBalance(inputAffectedTN, inputRectifiedTN, inputBalanceTN);
             }
+        }
+
+
+        private void calculateBalance1(EditText affectedView, EditText rectifiedView, EditText balanceView) {
+            String affectedText = affectedView.getText().toString();
+            String rectifiedText = rectifiedView.getText().toString();
+
+            int affected = 0;
+            int rectified = 0;
+
+            if (!affectedText.isEmpty()) {
+                affected = Integer.parseInt(affectedText);
+            }
+
+            if (!rectifiedText.isEmpty()) {
+                rectified = Integer.parseInt(rectifiedText);
+            }
+
+            int balance = affected + rectified;
+            balanceView.setText(String.valueOf(balance));
+        }
+        private void calculateBalance2(EditText affectedView, EditText rectifiedView, EditText balancedView, EditText expenditureView) {
+            String affectedText = affectedView.getText().toString();
+            String rectifiedText = rectifiedView.getText().toString();
+            String balancedText = balancedView.getText().toString();
+
+            int affected = 0;
+            int rectified = 0;
+            int balanced = 0;
+
+            if (!affectedText.isEmpty()) {
+                affected = Integer.parseInt(affectedText);
+            }
+
+            if (!rectifiedText.isEmpty()) {
+                rectified = Integer.parseInt(rectifiedText);
+            }
+
+            if (!balancedText.isEmpty()) {
+                balanced = Integer.parseInt(balancedText);
+            }
+
+            int expenditure = ((affected*255977) + (rectified*211834) + (balanced*155425))/100000;
+            expenditureView.setText(String.valueOf(expenditure));
         }
 
         private void calculateBalance(EditText affectedView, EditText rectifiedView, EditText balanceView) {
@@ -349,20 +417,104 @@ public class FormActivity extends AppCompatActivity {
         String district = spinnerDistrict.getSelectedItem().toString();
         String taluka = spinnerTaluka.getSelectedItem().toString();
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("affectedV", Integer.parseInt(inputAffectedV.getText().toString()));
-        data.put("rectifiedV", Integer.parseInt(inputRectifiedV.getText().toString()));
-        data.put("balanceV", Integer.parseInt(inputBalanceV.getText().toString()));
-        // Add all other fields similarly...
+        Map<String, Object> dataVillages = new HashMap<>();
+        dataVillages.put("affectedV", Integer.parseInt(inputAffectedV.getText().toString()));
+        dataVillages.put("rectifiedV", Integer.parseInt(inputRectifiedV.getText().toString()));
+        dataVillages.put("balanceV", Integer.parseInt(inputBalanceV.getText().toString()));
+
+        Map<String, Object> dataFeeders = new HashMap<>();
+        dataFeeders.put("affectedF", Integer.parseInt(inputAffectedF.getText().toString()));
+        dataFeeders.put("rectifiedF", Integer.parseInt(inputRectifiedF.getText().toString()));
+        dataFeeders.put("balanceF", Integer.parseInt(inputBalanceF.getText().toString()));
+
+        Map<String, Object> dataTown = new HashMap<>();
+        dataTown.put("affectedT", Integer.parseInt(inputAffectedT.getText().toString()));
+        dataTown.put("rectifiedT", Integer.parseInt(inputRectifiedT.getText().toString()));
+        dataTown.put("balanceT", Integer.parseInt(inputBalanceT.getText().toString()));
+
+        Map<String, Object> dataPoles = new HashMap<>();
+        dataPoles.put("affectedP", Integer.parseInt(inputAffectedP.getText().toString()));
+        dataPoles.put("rectifiedP", Integer.parseInt(inputRectifiedP.getText().toString()));
+        dataPoles.put("balanceP", Integer.parseInt(inputBalanceP.getText().toString()));
+
+        Map<String, Object> dataHTLine = new HashMap<>();
+        dataHTLine.put("affectedH", Integer.parseInt(inputAffectedH.getText().toString()));
+        dataHTLine.put("rectifiedH", Integer.parseInt(inputRectifiedH.getText().toString()));
+        dataHTLine.put("balanceH", Integer.parseInt(inputBalanceH.getText().toString()));
+
+        Map<String, Object> dataLTLine = new HashMap<>();
+        dataLTLine.put("affectedL", Integer.parseInt(inputAffectedL.getText().toString()));
+        dataLTLine.put("rectifiedL", Integer.parseInt(inputRectifiedL.getText().toString()));
+        dataLTLine.put("balanceL", Integer.parseInt(inputBalanceL.getText().toString()));
+
+        Map<String, Object> dataHLandLT = new HashMap<>();
+        int a = Integer.parseInt(inputAffectedH.getText().toString());
+        int b = Integer.parseInt(inputAffectedL.getText().toString());
+        int total = a + b;
+        dataHLandLT.put("Damaged Conductor(H.T + L.T)", total);
+
+        Map<String, Object> dataTCDamage = new HashMap<>();
+        dataTCDamage.put("affectedTC", Integer.parseInt(inputAffectedTC.getText().toString()));
+        dataTCDamage.put("rectifiedTC", Integer.parseInt(inputRectifiedTC.getText().toString()));
+        dataTCDamage.put("balanceTC", Integer.parseInt(inputBalanceTC.getText().toString()));
+
+        Map<String, Object> data3PhaseServiceLine = new HashMap<>();
+        data3PhaseServiceLine.put("affectedTP", Integer.parseInt(inputAffectedTP.getText().toString()));
+        data3PhaseServiceLine.put("rectifiedTP", Integer.parseInt(inputRectifiedTP.getText().toString()));
+        data3PhaseServiceLine.put("balanceTP", Integer.parseInt(inputBalanceTP.getText().toString()));
+
+        Map<String, Object> data1PhaseServiceLine = new HashMap<>();
+        data1PhaseServiceLine.put("affectedTO", Integer.parseInt(inputAffectedTO.getText().toString()));
+        data1PhaseServiceLine.put("rectifiedTO", Integer.parseInt(inputRectifiedTO.getText().toString()));
+        data1PhaseServiceLine.put("balanceTO", Integer.parseInt(inputBalanceTO.getText().toString()));
+
+        Map<String, Object> dataWaterWorks = new HashMap<>();
+        dataWaterWorks.put("affectedW", Integer.parseInt(inputAffectedW.getText().toString()));
+        dataWaterWorks.put("rectifiedW", Integer.parseInt(inputRectifiedW.getText().toString()));
+        dataWaterWorks.put("balanceW", Integer.parseInt(inputBalanceW.getText().toString()));
+
+        Map<String, Object> dataAccidentHumanFatal = new HashMap<>();
+        dataAccidentHumanFatal.put("DeptHFD", Integer.parseInt(inputDeptHFD.getText().toString()));
+        dataAccidentHumanFatal.put("OsHFO", Integer.parseInt(inputOsHFO.getText().toString()));
+
+        Map<String, Object> dataAccidentHumanNonFatal = new HashMap<>();
+        dataAccidentHumanNonFatal.put("DeptHND", Integer.parseInt(inputDeptHND.getText().toString()));
+        dataAccidentHumanNonFatal.put("OsHNO", Integer.parseInt(inputOsHNO.getText().toString()));
+
+        Map<String, Object> dataAccidentAnimalFatal = new HashMap<>();
+        dataAccidentAnimalFatal.put("AnimalFatal", Integer.parseInt(inputAnimalFatal.getText().toString()));
+
+        Map<String, Object> dataTotalConsumers = new HashMap<>();
+        dataTotalConsumers.put("affectedTN", Integer.parseInt(inputAffectedTN.getText().toString()));
+        dataTotalConsumers.put("rectifiedTN", Integer.parseInt(inputRectifiedTN.getText().toString()));
+        dataTotalConsumers.put("balanceTN", Integer.parseInt(inputBalanceTN.getText().toString()));
+
+        Map<String, Object> dataExpenditure = new HashMap<>();
+        dataExpenditure.put("Expenditure", Integer.parseInt(inputExpenditure.getText().toString()));
 
         CollectionReference mgvclRef = db.collection("MGVCL");
         DocumentReference dateTimeRef = mgvclRef.document(date + " " + timeOfDay);
         CollectionReference circleRef = dateTimeRef.collection(circle);
         DocumentReference districtRef = circleRef.document(district);
         CollectionReference talukaRef = districtRef.collection(taluka);
-        DocumentReference dataRef = talukaRef.document("Data");
 
-        dataRef.set(data)
+        talukaRef.document("Villages").set(dataVillages);
+        talukaRef.document("Feeders").set(dataFeeders);
+        talukaRef.document("Town").set(dataTown);
+        talukaRef.document("Poles").set(dataPoles);
+        talukaRef.document("H.T Line").set(dataHTLine);
+        talukaRef.document("L.T Line").set(dataLTLine);
+        talukaRef.document("HL + LT").set(dataHLandLT);
+        talukaRef.document("TC Damage").set(dataTCDamage);
+        talukaRef.document("3Phase Service line").set(data3PhaseServiceLine);
+        talukaRef.document("1Phase Service Line").set(data1PhaseServiceLine);
+        talukaRef.document("Water Works").set(dataWaterWorks);
+        talukaRef.document("Accident Human Fatal").set(dataAccidentHumanFatal);
+        talukaRef.document("Accident Human NonFatal").set(dataAccidentHumanNonFatal);
+        talukaRef.document("Accident Animal Fatal").set(dataAccidentAnimalFatal);
+        talukaRef.document("Total No of Consumers").set(dataTotalConsumers);
+        talukaRef.document("Expenditure").set(dataExpenditure)
+
                 .addOnSuccessListener(aVoid -> Toast.makeText(FormActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(FormActivity.this, "Error saving data: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
