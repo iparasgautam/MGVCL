@@ -365,6 +365,7 @@ public class FormActivity extends AppCompatActivity {
             int balance = affected + rectified;
             balanceView.setText(String.valueOf(balance));
         }
+
         private void calculateBalance2(EditText affectedView, EditText rectifiedView, EditText balancedView, EditText expenditureView) {
             String affectedText = affectedView.getText().toString();
             String rectifiedText = rectifiedView.getText().toString();
@@ -386,7 +387,7 @@ public class FormActivity extends AppCompatActivity {
                 balanced = Integer.parseInt(balancedText);
             }
 
-            int expenditure = ((affected*255977) + (rectified*211834) + (balanced*155425))/100000;
+            float expenditure = (float)((affected*255977) + (rectified*211834) + (balanced*155425))/100000;
             expenditureView.setText(String.valueOf(expenditure));
         }
 
@@ -490,7 +491,7 @@ public class FormActivity extends AppCompatActivity {
         dataTotalConsumers.put("balanceTN", Integer.parseInt(inputBalanceTN.getText().toString()));
 
         Map<String, Object> dataExpenditure = new HashMap<>();
-        dataExpenditure.put("Expenditure", Integer.parseInt(inputExpenditure.getText().toString()));
+        dataExpenditure.put("Expenditure", Float.parseFloat(inputExpenditure.getText().toString()));
 
         CollectionReference mgvclRef = db.collection("MGVCL");
         DocumentReference dateTimeRef = mgvclRef.document(date + " " + timeOfDay);
