@@ -3,6 +3,7 @@ package com.example.mgvcl;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -190,7 +192,7 @@ public class FormActivity extends AppCompatActivity {
         districtsMap = new HashMap<>();
         talukasMap = new HashMap<>();
 
-        // Populate Districts and Talukas Map (Sample Data)
+        // Populate Districts and Talukas Map
 
 //        districtsMap.put("Anand", new String[]{"Anand", "Kheda"});
 //        talukasMap.put("Anand", new String[]{"Anand", "Anklav", "Borsad", "Khambhat", "Petlad", "Sojitra", "Tarapur", "Umreth"});
@@ -411,6 +413,8 @@ public class FormActivity extends AppCompatActivity {
         }
     }
 
+
+
     private void saveDataToFirestore() {
         String date = tvSelectedDate.getText().toString();
         String timeOfDay = spinnerTimeOfDay.getSelectedItem().toString();
@@ -418,61 +422,29 @@ public class FormActivity extends AppCompatActivity {
         String district = spinnerDistrict.getSelectedItem().toString();
         String taluka = spinnerTaluka.getSelectedItem().toString();
 
-        Map<String, Object> dataVillages = new HashMap<>();
-        dataVillages.put("affectedV", Integer.parseInt(inputAffectedV.getText().toString()));
-        dataVillages.put("rectifiedV", Integer.parseInt(inputRectifiedV.getText().toString()));
-        dataVillages.put("balanceV", Integer.parseInt(inputBalanceV.getText().toString()));
+        EditText firstInvalidField = validateInputs();
+        if (firstInvalidField != null) {
+            firstInvalidField.requestFocus(); // Focus on the first invalid field
+            return;
+        }
 
-        Map<String, Object> dataFeeders = new HashMap<>();
-        dataFeeders.put("affectedF", Integer.parseInt(inputAffectedF.getText().toString()));
-        dataFeeders.put("rectifiedF", Integer.parseInt(inputRectifiedF.getText().toString()));
-        dataFeeders.put("balanceF", Integer.parseInt(inputBalanceF.getText().toString()));
+        Map<String, Object> dataVillages = createDataMap(inputAffectedV, inputRectifiedV, inputBalanceV);
+        Map<String, Object> dataFeeders = createDataMap(inputAffectedF, inputRectifiedF, inputBalanceF);
+        Map<String, Object> dataTown = createDataMap(inputAffectedT, inputRectifiedT, inputBalanceT);
+        Map<String, Object> dataPoles = createDataMap(inputAffectedP, inputRectifiedP, inputBalanceP);
+        Map<String, Object> dataHTLine = createDataMap(inputAffectedH, inputRectifiedH, inputBalanceH);
+        Map<String, Object> dataLTLine = createDataMap(inputAffectedL, inputRectifiedL, inputBalanceL);
 
-        Map<String, Object> dataTown = new HashMap<>();
-        dataTown.put("affectedT", Integer.parseInt(inputAffectedT.getText().toString()));
-        dataTown.put("rectifiedT", Integer.parseInt(inputRectifiedT.getText().toString()));
-        dataTown.put("balanceT", Integer.parseInt(inputBalanceT.getText().toString()));
-
-        Map<String, Object> dataPoles = new HashMap<>();
-        dataPoles.put("affectedP", Integer.parseInt(inputAffectedP.getText().toString()));
-        dataPoles.put("rectifiedP", Integer.parseInt(inputRectifiedP.getText().toString()));
-        dataPoles.put("balanceP", Integer.parseInt(inputBalanceP.getText().toString()));
-
-        Map<String, Object> dataHTLine = new HashMap<>();
-        dataHTLine.put("affectedH", Integer.parseInt(inputAffectedH.getText().toString()));
-        dataHTLine.put("rectifiedH", Integer.parseInt(inputRectifiedH.getText().toString()));
-        dataHTLine.put("balanceH", Integer.parseInt(inputBalanceH.getText().toString()));
-
-        Map<String, Object> dataLTLine = new HashMap<>();
-        dataLTLine.put("affectedL", Integer.parseInt(inputAffectedL.getText().toString()));
-        dataLTLine.put("rectifiedL", Integer.parseInt(inputRectifiedL.getText().toString()));
-        dataLTLine.put("balanceL", Integer.parseInt(inputBalanceL.getText().toString()));
-
+        int affectedH = Integer.parseInt(inputAffectedH.getText().toString());
+        int affectedL = Integer.parseInt(inputAffectedL.getText().toString());
+        int totalHL = affectedH + affectedL;
         Map<String, Object> dataHLandLT = new HashMap<>();
-        int a = Integer.parseInt(inputAffectedH.getText().toString());
-        int b = Integer.parseInt(inputAffectedL.getText().toString());
-        int total = a + b;
-        dataHLandLT.put("Damaged Conductor(H.T + L.T)", total);
+        dataHLandLT.put("Damaged Conductor(H.T + L.T)", totalHL);
 
-        Map<String, Object> dataTCDamage = new HashMap<>();
-        dataTCDamage.put("affectedTC", Integer.parseInt(inputAffectedTC.getText().toString()));
-        dataTCDamage.put("rectifiedTC", Integer.parseInt(inputRectifiedTC.getText().toString()));
-        dataTCDamage.put("balanceTC", Integer.parseInt(inputBalanceTC.getText().toString()));
-
-        Map<String, Object> data3PhaseServiceLine = new HashMap<>();
-        data3PhaseServiceLine.put("affectedTP", Integer.parseInt(inputAffectedTP.getText().toString()));
-        data3PhaseServiceLine.put("rectifiedTP", Integer.parseInt(inputRectifiedTP.getText().toString()));
-        data3PhaseServiceLine.put("balanceTP", Integer.parseInt(inputBalanceTP.getText().toString()));
-
-        Map<String, Object> data1PhaseServiceLine = new HashMap<>();
-        data1PhaseServiceLine.put("affectedTO", Integer.parseInt(inputAffectedTO.getText().toString()));
-        data1PhaseServiceLine.put("rectifiedTO", Integer.parseInt(inputRectifiedTO.getText().toString()));
-        data1PhaseServiceLine.put("balanceTO", Integer.parseInt(inputBalanceTO.getText().toString()));
-
-        Map<String, Object> dataWaterWorks = new HashMap<>();
-        dataWaterWorks.put("affectedW", Integer.parseInt(inputAffectedW.getText().toString()));
-        dataWaterWorks.put("rectifiedW", Integer.parseInt(inputRectifiedW.getText().toString()));
-        dataWaterWorks.put("balanceW", Integer.parseInt(inputBalanceW.getText().toString()));
+        Map<String, Object> dataTCDamage = createDataMap(inputAffectedTC, inputRectifiedTC, inputBalanceTC);
+        Map<String, Object> data3PhaseServiceLine = createDataMap(inputAffectedTP, inputRectifiedTP, inputBalanceTP);
+        Map<String, Object> data1PhaseServiceLine = createDataMap(inputAffectedTO, inputRectifiedTO, inputBalanceTO);
+        Map<String, Object> dataWaterWorks = createDataMap(inputAffectedW, inputRectifiedW, inputBalanceW);
 
         Map<String, Object> dataAccidentHumanFatal = new HashMap<>();
         dataAccidentHumanFatal.put("DeptHFD", Integer.parseInt(inputDeptHFD.getText().toString()));
@@ -485,10 +457,7 @@ public class FormActivity extends AppCompatActivity {
         Map<String, Object> dataAccidentAnimalFatal = new HashMap<>();
         dataAccidentAnimalFatal.put("AnimalFatal", Integer.parseInt(inputAnimalFatal.getText().toString()));
 
-        Map<String, Object> dataTotalConsumers = new HashMap<>();
-        dataTotalConsumers.put("affectedTN", Integer.parseInt(inputAffectedTN.getText().toString()));
-        dataTotalConsumers.put("rectifiedTN", Integer.parseInt(inputRectifiedTN.getText().toString()));
-        dataTotalConsumers.put("balanceTN", Integer.parseInt(inputBalanceTN.getText().toString()));
+        Map<String, Object> dataTotalConsumers = createDataMap(inputAffectedTN, inputRectifiedTN, inputBalanceTN);
 
         Map<String, Object> dataExpenditure = new HashMap<>();
         dataExpenditure.put("Expenditure", Float.parseFloat(inputExpenditure.getText().toString()));
@@ -499,24 +468,76 @@ public class FormActivity extends AppCompatActivity {
         DocumentReference districtRef = circleRef.document(district);
         CollectionReference talukaRef = districtRef.collection(taluka);
 
-        talukaRef.document("Villages").set(dataVillages);
-        talukaRef.document("Feeders").set(dataFeeders);
-        talukaRef.document("Town").set(dataTown);
-        talukaRef.document("Poles").set(dataPoles);
-        talukaRef.document("H.T Line").set(dataHTLine);
-        talukaRef.document("L.T Line").set(dataLTLine);
-        talukaRef.document("HL + LT").set(dataHLandLT);
-        talukaRef.document("TC Damage").set(dataTCDamage);
-        talukaRef.document("3Phase Service line").set(data3PhaseServiceLine);
-        talukaRef.document("1Phase Service Line").set(data1PhaseServiceLine);
-        talukaRef.document("Water Works").set(dataWaterWorks);
-        talukaRef.document("Accident Human Fatal").set(dataAccidentHumanFatal);
-        talukaRef.document("Accident Human NonFatal").set(dataAccidentHumanNonFatal);
-        talukaRef.document("Accident Animal Fatal").set(dataAccidentAnimalFatal);
-        talukaRef.document("Total No of Consumers").set(dataTotalConsumers);
-        talukaRef.document("Expenditure").set(dataExpenditure)
+        // Batched writes for better performance and atomicity
+        WriteBatch batch = db.batch();
+        batch.set(talukaRef.document("Villages"), dataVillages);
+        batch.set(talukaRef.document("Feeders"), dataFeeders);
+        batch.set(talukaRef.document("Town"), dataTown);
+        batch.set(talukaRef.document("Poles"), dataPoles);
+        batch.set(talukaRef.document("H.T Line"), dataHTLine);
+        batch.set(talukaRef.document("L.T Line"), dataLTLine);
+        batch.set(talukaRef.document("HL + LT"), dataHLandLT);
+        batch.set(talukaRef.document("TC Damage"), dataTCDamage);
+        batch.set(talukaRef.document("3Phase Service line"), data3PhaseServiceLine);
+        batch.set(talukaRef.document("1Phase Service Line"), data1PhaseServiceLine);
+        batch.set(talukaRef.document("Water Works"), dataWaterWorks);
+        batch.set(talukaRef.document("Accident Human Fatal"), dataAccidentHumanFatal);
+        batch.set(talukaRef.document("Accident Human NonFatal"), dataAccidentHumanNonFatal);
+        batch.set(talukaRef.document("Accident Animal Fatal"), dataAccidentAnimalFatal);
+        batch.set(talukaRef.document("Total No of Consumers"), dataTotalConsumers);
+        batch.set(talukaRef.document("Expenditure"), dataExpenditure);
 
-                .addOnSuccessListener(aVoid -> Toast.makeText(FormActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show())
+        batch.commit()
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(FormActivity.this, "Data saved successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(FormActivity.this, FormActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    finish();
+                })
                 .addOnFailureListener(e -> Toast.makeText(FormActivity.this, "Error saving data: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
+
+    private Map<String, Object> createDataMap(EditText affected, EditText rectified, EditText balance) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("affected", Integer.parseInt(affected.getText().toString()));
+        data.put("rectified", Integer.parseInt(rectified.getText().toString()));
+        data.put("balance", Integer.parseInt(balance.getText().toString()));
+        return data;
+    }
+
+    private EditText validateInputs() {
+        EditText[] fieldsToValidate = {
+                inputAffectedV, inputRectifiedV, inputBalanceV,
+                inputAffectedF, inputRectifiedF, inputBalanceF,
+                inputAffectedT, inputRectifiedT, inputBalanceT,
+                inputAffectedP, inputRectifiedP, inputBalanceP,
+                inputAffectedH, inputRectifiedH, inputBalanceH,
+                inputAffectedL, inputRectifiedL, inputBalanceL,
+                inputAffectedTC, inputRectifiedTC, inputBalanceTC,
+                inputAffectedTP, inputRectifiedTP, inputBalanceTP,
+                inputAffectedTO, inputRectifiedTO, inputBalanceTO,
+                inputAffectedW, inputRectifiedW, inputBalanceW,
+                inputDeptHFD, inputOsHFO, inputDeptHND, inputOsHNO,
+                inputAnimalFatal, inputAffectedTN, inputRectifiedTN, inputBalanceTN,
+                inputExpenditure
+        };
+
+        for (EditText field : fieldsToValidate) {
+            String value = field.getText().toString().trim();
+            if (value.isEmpty()) {
+                field.setError("Required");
+                return field; // Return the first empty field
+            }
+            try {
+                Integer.parseInt(value);
+            } catch (NumberFormatException e) {
+                field.setError("Must be a valid number");
+                return field; // Return the first field with invalid number format
+            }
+        }
+        return null;
+    }
+
+
 }

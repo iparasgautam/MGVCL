@@ -39,10 +39,12 @@
                 android:background="@drawable/custom_edittext"
                 android:layout_marginTop="40dp"
                 android:padding="8dp"
+                android:maxLines="1"
                 android:hint="Email"
                 android:drawableLeft="@drawable/baseline_person_3_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:inputType="text"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -56,6 +58,7 @@
                     android:background="@drawable/custom_edittext"
                     android:inputType="textPassword"
                     android:padding="8dp"
+                    android:maxLines="1"
                     android:hint="Password"
                     android:drawableLeft="@drawable/baseline_lock_24"
                     android:drawablePadding="8dp"
