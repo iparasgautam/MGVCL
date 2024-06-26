@@ -57,12 +57,11 @@ public class SelectActivity extends AppCompatActivity {
             }
         });
 
-        // Initialize formActivity Button
+        // Initialize fetchActivity Button
         fetchActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SelectActivity.this, FetchActivity.class);
-                startActivity(intent);
+                fetchData();
             }
         });
     }
@@ -153,5 +152,24 @@ public class SelectActivity extends AppCompatActivity {
                 year, month, day);
         datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         datePickerDialog.show();
+    }
+
+    private void fetchData() {
+        String date = tvSelectedDate.getText().toString();
+        String timeOfDay = spinnerTimeOfDay.getSelectedItem().toString();
+        String circle = spinnerCircle.getSelectedItem().toString();
+        String district = spinnerDistrict.getSelectedItem().toString();
+        String taluka = spinnerTaluka.getSelectedItem().toString();
+
+        // Combine date and time of day
+        String dateTime = date + " " + timeOfDay;
+
+        // Pass data to the next activity
+        Intent intent = new Intent(SelectActivity.this, FetchActivity.class);
+        intent.putExtra("dateTime", dateTime);
+        intent.putExtra("circle", circle);
+        intent.putExtra("district", district);
+        intent.putExtra("taluka", taluka);
+        startActivity(intent);
     }
 }

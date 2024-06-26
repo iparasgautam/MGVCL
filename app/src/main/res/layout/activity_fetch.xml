@@ -36,6 +36,7 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+                    android:id="@+id/displayDataTextView1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -59,6 +60,7 @@
                         android:gravity="center_vertical">
 
                         <TextView
+                            android:id="@+id/displayDataTextView2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -91,6 +93,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -121,6 +125,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -160,6 +166,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -183,6 +191,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView6"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -215,6 +225,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView7"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -245,6 +257,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -284,6 +298,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -307,6 +323,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -339,6 +357,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView11"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -369,6 +389,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -408,6 +430,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -431,6 +455,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -463,6 +489,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView15"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -493,6 +521,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -532,6 +562,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView17"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -555,6 +587,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView18"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -587,6 +621,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView19"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -617,6 +653,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -656,6 +694,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -679,6 +719,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView22"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -711,6 +753,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView23"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -741,6 +785,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -780,6 +826,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView25"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -797,6 +845,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Length in KM"
@@ -836,6 +886,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView27"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -859,6 +911,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView28"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -891,6 +945,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView29"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -921,6 +977,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -960,6 +1018,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView31"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -983,6 +1043,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView32"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -1015,6 +1077,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView33"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -1045,6 +1109,7 @@
                     android:paddingTop="10dp">
 
                     <TextView
+                        android:id="@+id/displayDataTextView34"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -1084,6 +1149,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView35"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -1107,6 +1174,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView36"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -1139,6 +1208,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView37"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -1169,6 +1240,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView38"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -1208,6 +1281,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView39"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -1231,6 +1306,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView40"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -1263,6 +1340,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView41"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -1293,6 +1372,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView42"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -1332,6 +1413,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView43"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -1341,6 +1424,8 @@
                     android:textColor="#00008B"/>
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView44"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -1365,6 +1450,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView45"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Dept."
@@ -1397,6 +1484,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView46"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="O/S"
@@ -1419,6 +1508,8 @@
                 </LinearLayout>
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView47"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -1442,6 +1533,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView48"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Dept."
@@ -1474,6 +1567,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView49"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="O/S"
@@ -1496,6 +1591,8 @@
                 </LinearLayout>
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView50"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -1519,6 +1616,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView51"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Animal Fatal"
@@ -1559,6 +1658,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView52"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -1582,6 +1683,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView53"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Affected"
@@ -1614,6 +1717,8 @@
                         android:gravity="center_vertical">
 
                         <TextView
+
+                            android:id="@+id/displayDataTextView54"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Rectified"
@@ -1644,6 +1749,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView55"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balance"
@@ -1683,6 +1790,8 @@
                 android:background="@drawable/editbox_border">
 
                 <TextView
+
+                    android:id="@+id/displayDataTextView56"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -1700,6 +1809,8 @@
                     android:paddingTop="10dp">
 
                     <TextView
+
+                        android:id="@+id/displayDataTextView57"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Expenditure"
