@@ -14,7 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
-
+        <activity
+            android:name=".PrintActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WhatsappActivity"
+            android:exported="false" />
         <activity
             android:name=".SelectActivity"
             android:exported="false" />

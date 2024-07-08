@@ -9,7 +9,7 @@
     android:clipToPadding="false"
     android:fillViewport="true"
     android:background="@drawable/pagebkg"
-    tools:context=".FormActivity">
+    tools:context=".SelectionActivity">
 
     <!--LinearLayout for adding multiple child-->
     <LinearLayout
@@ -18,7 +18,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp"
-        tools:context=".FormActivity">
+        tools:context=".SelectionActivity">
 
         <androidx.cardview.widget.CardView
             android:layout_width="250sp"
